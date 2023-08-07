@@ -1,4 +1,4 @@
-package com.example.capstoneuser.entity;
+package com.capstone.capstonecart.entity;
 
 public enum Admin {
     TRUE(true),

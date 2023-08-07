@@ -23,7 +23,7 @@ import com.capstone.capstonecart.service.CartServiceImpl;
 
 @RestController
 @RequestMapping("/cart")
-@CrossOrigin(origins = "https://domainofchain.s3.us-east-2.amazonaws.com")
+@CrossOrigin(origins = {"https://domainofchain.s3.us-east-2.amazonaws.com","http://localhost:4200/", "http://localhost:4200/","https://capstone-angular-jj.s3.us-east-2.amazonaws.com"})
 public class CartController {
 	@Autowired
 	CartServiceImpl service;
@@ -37,11 +37,11 @@ public List<Cart> getAllByUser(@PathVariable int id){
 public String addCart(@RequestBody Cart cart) {
 	try {
 		service.addCart(cart);
-		return "Cart added successfully";
+		return "\"Cart added successfully\"";
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-		return "Error no cart added.";
+		return "\"Error no cart added.\"";
 	}
 	
 }
@@ -50,11 +50,11 @@ public String addCart(@RequestBody Cart cart) {
 //check if cartId matches userId
 public String updateCart(@RequestParam(name = "cartId")  int cartId, @RequestParam(name = "quantity") int quantity) {
 	try {
-		return service.updateCartQuantity(cartId, quantity) ? "Quantity updated successfully" : "Quanity not updated";
+		return service.updateCartQuantity(cartId, quantity) ? "\"Quantity updated successfully\"" : "\"Quanity not updated\"";
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-		return "Error in updating cart";
+		return "\"Error in updating cart\"";
 	}
 }
 	
@@ -62,11 +62,11 @@ public String updateCart(@RequestParam(name = "cartId")  int cartId, @RequestPar
 public String deleteCart(@RequestParam(name = "cartId")  int cartId) {
 	try {
 		service.deleteCartById(cartId);
-		return "Cart deleted successfully.";
+		return "\"Cart deleted successfully.\"";
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
-		return "Error in deleting cart.";
+		return "\"Error in deleting cart.\"";
 	}
 	
 }
